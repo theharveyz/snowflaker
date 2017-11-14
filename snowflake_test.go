@@ -27,7 +27,7 @@ func TestMutliThreadNextID(t *testing.T) {
 	for i := 0; i < 100; i++ {
 		wg.Add(1)
 		go func(i int) {
-			wg.Done()
+			defer wg.Done()
 			id, _ := sf.NextID()
 			ids = append(ids, id)
 			fmt.Println("G:", i)
